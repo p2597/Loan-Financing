@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\Loan; // Import the Loan model
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
     public function __invoke()
     {
-        $articles = Article::whereNotNull('published_at')->get()->sortByDesc('published_at');
+        // Fetch all loans from the database
+        $loans = Loan::all();
 
-        return view('welcome')->with('articles', $articles);
-        //return view('welcome', compact('articles'));
+        // Return the 'welcome' view and pass the loans data
+        return view('welcome', compact('loans'));
     }
 }

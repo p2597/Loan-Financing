@@ -17,5 +17,11 @@ export default {
         },
     },
 
+    extend: {
+        colors: {
+          'custom-green': '#82CD47',
+        },
+      },
+
     plugins: [forms],
 };
