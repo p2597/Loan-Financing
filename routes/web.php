@@ -11,8 +11,13 @@ Route::get('/', \App\Http\Controllers\WelcomeController::class);
 Route::get('/', [\App\Http\Controllers\LoanController::class, 'index'])->name('loan.welcome');
 Route::get('loan/{id}', [\App\Http\Controllers\LoanController::class, 'show'])->name('loan.show');
 
-Route::get('/loan/{loan}/apply', [LoanApplicationsController::class, 'create'])->name('loanApplications.create');
-Route::post('/loan/{loan}/apply', [LoanApplicationsController::class, 'store'])->name('loanApplications.store');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/loan/{loan}/apply', [LoanApplicationsController::class, 'create'])->name('loanApplications.create');
+    Route::post('/loan/{loan}/apply', [LoanApplicationsController::class, 'store'])->name('loanApplications.store');
+});
+
+//for listing the loan applications
+Route::get('/loanApplications', [LoanApplicationsController::class, 'index'])->name('loanApplications.index');
 
 Route::get('/dashboard', function () {
     // Fetch all loans from the database

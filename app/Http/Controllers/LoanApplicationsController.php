@@ -31,8 +31,18 @@ public function store(Request $request, Loan $loan)
         'terms' => $validated['terms'],
         'user_id' => auth()->id(), 
     ]);
+    return redirect()->route('loanApplications.index')->with('success', 'Application submitted successfully!');
+    }
 
-    
-}
+    /**
+     * Display a listing of loan applications for the authenticated user.
+     */
+    public function index()
+    {
+        $loanApplications = LoanApplication::where('user_id', auth()->id())
+            ->with('loan') // Eager load the related loan
+            ->get();
 
+        return view('loanApplications.index', compact('loanApplications'));
+    }
 }
