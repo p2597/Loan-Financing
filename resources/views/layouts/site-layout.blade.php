@@ -12,7 +12,9 @@
 
         <!-- Styles / Scripts -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <link href="{{ asset('css/app.css')}}" rel="stylesheet">   
+         <!-- Scripts -->
+         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
     </head>
     <body class="font-sans antialiased h-full">
        <!--

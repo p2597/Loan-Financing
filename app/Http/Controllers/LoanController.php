@@ -23,4 +23,6 @@ public function index()
     $loans = Loan::all(); // Fetch all loans
     return view('welcome', ['loans' => $loans]);
 }
+
+
 }

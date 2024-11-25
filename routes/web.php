@@ -16,6 +16,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/loan/{loan}/apply', [LoanApplicationsController::class, 'store'])->name('loanApplications.store');
 });
 
+Route::delete('/loanApplications/{loanApplication}', [LoanApplicationsController::class, 'destroy'])->name('loanApplications.destroy');
+
+
+// Edit a loan application
+Route::get('/loanApplications/{loanApplication}/edit', [LoanApplicationsController::class, 'edit'])->name('loanApplications.edit');
+Route::patch('/loanApplications/{loanApplication}', [LoanApplicationsController::class, 'update'])->name('loanApplications.update');
+
+
+
 //for listing the loan applications
 Route::get('/loanApplications', [LoanApplicationsController::class, 'index'])->name('loanApplications.index');
 

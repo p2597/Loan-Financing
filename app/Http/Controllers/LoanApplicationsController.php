@@ -45,4 +45,29 @@ public function store(Request $request, Loan $loan)
 
         return view('loanApplications.index', compact('loanApplications'));
     }
+    public function edit(LoanApplication $loanApplication)
+    {
+        return view('loanApplications.edit', compact('loanApplication'));
+    }
+    
+    public function destroy(LoanApplication $loanApplication)
+    {
+        // Delete the loan application
+        $loanApplication->delete();
+    
+        return redirect()->route('loanApplications.index')->with('success', 'Loan application deleted successfully!');
+    }
+    public function update(Request $request, LoanApplication $loanApplication)
+    {
+        $validated = $request->validate([
+            'salary' => 'required|numeric|min:0',
+            'terms' => 'required|string',
+        ]);
+    
+        $loanApplication->update($validated);
+    
+        return redirect()->route('loanApplications.index')->with('success', 'Loan application updated successfully!');
+    }
+    
+    
 }
