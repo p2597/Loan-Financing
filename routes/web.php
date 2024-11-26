@@ -6,7 +6,7 @@ use App\Models\LoanApplication;
 use Illuminate\Support\Facades\Route;
 use App\Models\Loan;
 
-Route::get('/', \App\Http\Controllers\WelcomeController::class);
+
 
 Route::get('/', [\App\Http\Controllers\LoanController::class, 'index'])->name('loan.welcome');
 Route::get('loan/{id}', [\App\Http\Controllers\LoanController::class, 'show'])->name('loan.show');
@@ -40,5 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';

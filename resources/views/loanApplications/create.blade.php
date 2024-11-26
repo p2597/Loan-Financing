@@ -19,7 +19,7 @@
             </select>
         </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Application</button>
+        <button type="submit" class="bg-stone-500 text-white px-4 py-2 rounded hover:bg-gray-600">Submit Application</button>
     </form>
 
 </x-site-layout>
