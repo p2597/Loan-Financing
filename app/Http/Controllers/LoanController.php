@@ -11,9 +11,6 @@ class LoanController extends Controller
 {
     $loan = Loan::where("id", $id)->first();
 
-    if ($loan === null) {
-        abort(404);
-    }
 
     return view('loan.show')->with('loan', $loan);
 }

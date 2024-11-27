@@ -13,10 +13,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        // Seed Users
+       
         User::factory(10)->create();
 
-        // Seed Loan Applications
         LoanApplication::factory(20)->create();
     }
 }

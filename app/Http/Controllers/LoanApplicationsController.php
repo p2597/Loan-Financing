@@ -8,7 +8,7 @@ use App\Models\LoanApplication;
 
 class LoanApplicationsController extends Controller
 {
-    // Show the application form for a specific loan
+  
     public function create(Loan $loan)
     {
         return view('loanApplications.create', compact('loan'));
@@ -24,7 +24,7 @@ public function store(Request $request, Loan $loan)
         'terms' => 'required|string',
     ]);
 
-    // Create a new loan application
+  
     LoanApplication::create([
         'loan_id' => $loan->id, // Reference to the loan
         'salary' => $validated['salary'],
@@ -40,7 +40,7 @@ public function store(Request $request, Loan $loan)
     public function index()
     {
         $loanApplications = LoanApplication::where('user_id', auth()->id())
-            ->with('loan') // Eager load the related loan
+            ->with('loan') 
             ->get();
 
         return view('loanApplications.index', compact('loanApplications'));
